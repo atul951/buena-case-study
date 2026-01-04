@@ -1,5 +1,6 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import { Property } from '@/types/property';
 import { Card, CardContent, Box, Typography, Chip, Avatar } from '@mui/material';
 import { Business as BusinessIcon } from '@mui/icons-material';
@@ -9,17 +10,24 @@ interface PropertyCardProps {
 }
 
 export default function PropertyCard({ property }: PropertyCardProps) {
+  const router = useRouter();
   const typeColor = property.type === 'WEG' ? 'secondary' : 'success';
+
+  const handleCardClick = () => {
+    router.push(`/properties/${property.id}`);
+  };
 
   return (
     <Card
+      onClick={handleCardClick}
       sx={{
         height: '100%',
         display: 'flex',
         flexDirection: 'column',
-        transition: 'box-shadow 0.3s',
+        transition: 'box-shadow 0.3s, transform 0.2s',
         '&:hover': {
           boxShadow: 6,
+          transform: 'translateY(-4px)',
         },
         cursor: 'pointer',
       }}
