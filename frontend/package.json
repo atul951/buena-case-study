@@ -1,0 +1,35 @@
+{
+  "name": "buena-property-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "next": "14.0.0",
+    "typescript": "^5.1.3",
+    "@types/node": "^20.3.1",
+    "@types/react": "^18.2.14",
+    "@types/react-dom": "^18.2.6",
+    "@mui/material": "^5.14.20",
+    "@mui/icons-material": "^5.14.19",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "react-hook-form": "^7.45.0",
+    "zod": "^3.21.4",
+    "@hookform/resolvers": "^3.3.1",
+    "axios": "^1.4.0",
+    "lucide-react": "^0.263.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.42.0",
+    "eslint-config-next": "14.0.0",
+    "postcss": "^8.4.31",
+    "autoprefixer": "^10.4.16"
+  }
+}
