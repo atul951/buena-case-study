@@ -14,6 +14,16 @@ A full-stack property management dashboard for creating and managing WEG (Wohnun
 ### Dashboard
 - View all properties with search and filter functionality
 - Property cards showing name, type, unique number, manager, and accountant
+- **Clickable property cards** to view detailed information
+
+### Property Details View
+- **Tabbed interface** for organized information:
+  - **Buildings Tab**: View all buildings associated with the property with addresses and unit counts
+  - **All Units Tab**: Comprehensive table view of all units with sortable columns and details
+  - **Details Tab**: Complete property information, manager, and accountant details
+- **Summary Cards**: Quick stats showing total buildings, units, assigned manager, and accountant
+- **Unit Details Modal**: Click any unit to view complete details (floor, entrance, size, rooms, co-ownership share, construction year)
+- **Responsive Design**: Mobile-friendly layout with Material-UI components
 
 ### Property Creation Flow (3 Steps)
 
@@ -36,6 +46,19 @@ A full-stack property management dashboard for creating and managing WEG (Wohnun
    - Unit types: Apartment, Office, Garden, Parking
    - Fields: number, type, building, floor, entrance, size, co-ownership share, construction year, rooms
    - Pre-filled from PDF if available
+
+## Viewing Property Details
+
+Once a property is created, users can view comprehensive details by clicking on any property card from the dashboard:
+
+1. **Navigate to Property Details**: Click on a property card from the dashboard
+2. **Buildings Overview**: View all buildings associated with the property with full address information
+3. **Units Management**: Browse all units in a table format with key information (size, floor, rooms, co-ownership share)
+4. **Unit Details**: Click on any unit in the table to view complete details in a modal dialog
+5. **Property Information**: Access the Details tab to see complete property info, manager, and accountant details
+6. **Refresh Data**: Use the refresh button to reload property, building, and unit information
+
+The interface provides tabs for easy navigation between Buildings, All Units, and Property Details views.
 
 ## Prerequisites
 
@@ -155,7 +178,7 @@ The frontend will run on `http://localhost:3000`
 
 ### Properties
 - `GET /properties` - List all properties
-- `GET /properties/:id` - Get property details
+- `GET /properties/:id` - Get property details (includes buildings and units relations)
 - `POST /properties` - Create property
 - `PUT /properties/:id` - Update property
 - `GET /properties/managers` - Get all property managers
@@ -241,12 +264,22 @@ buena-property-dashboard/
 │   └── uploads/             # PDF storage
 ├── frontend/
 │   ├── app/
-│   │   ├── page.tsx         # Dashboard
+│   │   ├── page.tsx         # Dashboard with property list
 │   │   └── properties/
-│   │       └── create/      # Multi-step form
-│   ├── components/          # React components
+│   │       ├── [id]/
+│   │       │   └── page.tsx # Property details view
+│   │       └── create/      # Multi-step form for property creation
+│   ├── components/
+│   │   ├── PropertyCard.tsx              # Property card component (clickable)
+│   │   ├── PropertyDetailsView.tsx       # Tabbed details view for properties
+│   │   ├── UnitDetailsView.tsx          # Unit details modal component
+│   │   ├── UnitBulkEntry.tsx            # Bulk unit entry component
+│   │   ├── FileUpload.tsx               # PDF file upload component
+│   │   ├── StepIndicator.tsx            # Step indicator for creation flow
+│   │   └── ThemeRegistry.tsx            # Material-UI theme configuration
 │   ├── lib/                 # API client
-│   └── types/               # TypeScript types
+│   ├── types/               # TypeScript types
+│   └── public/              # Static assets
 └── docker-compose.yml       # PostgreSQL setup
 ```
 
