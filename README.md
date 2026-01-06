@@ -290,6 +290,6 @@ buena-property-dashboard/
 - CORS is enabled for `http://localhost:3000` by default
 - The application uses UUIDs for all entity IDs
 
-## License
+## Project walkthrough video link [Loom]
 
-MIT
+https://www.loom.com/share/6e8d531d0d1a4aeeb9f865d72aef78f2
